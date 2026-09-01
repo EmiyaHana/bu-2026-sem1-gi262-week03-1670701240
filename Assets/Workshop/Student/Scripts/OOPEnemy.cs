@@ -6,8 +6,12 @@ public class OOPEnemy : Character
 {
     public void Start()
     {
-
+        GetRemainEnergy();
     }
 
-    public 
+    public void Attack(OOPPlayer _player)
+    {
+        _player.energy -= attackPoint;
+        Debug.Log("player is energy " + _player.energy);
+    }
 }

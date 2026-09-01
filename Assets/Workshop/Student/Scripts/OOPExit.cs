@@ -5,5 +5,12 @@ using UnityEngine.UIElements;
 
 public class OOPExit : Identity
 {
-    
+    public GameObject YouWin;
+
+    public override void Hit()
+    {
+        mapGenerator.player.enabled = false;
+        YouWin.SetActive(true);
+        Debug.Log("You win");
+    }
 }

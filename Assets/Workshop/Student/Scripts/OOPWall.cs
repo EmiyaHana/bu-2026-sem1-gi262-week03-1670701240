@@ -11,12 +11,23 @@ public class OOPWall : Identity
 
     public void Start()
     {
-        
+        isIceWall = Random.Range(0, 100) < 20 ? true : false;
+        if (isIceWall)
+        {
+            GetComponent<SpriteRenderer>().color = Color.blue;
+        }
     }
 
     public override void Hit()
     {
-        mapGenerator.player.TakeDamage(Damage);
+        if (isIceWall)
+        {
+            mapGenerator.player.TakeDamage(Damage, isIceWall);
+        }
+        else
+        {
+            mapGenerator.player.TakeDamage(Damage);
+        }
         Destroy(gameObject);
         mapGenerator.mapdata[positionX, positionY] = mapGenerator.empty;
     }
